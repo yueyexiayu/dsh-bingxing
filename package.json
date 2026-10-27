@@ -1,0 +1,20 @@
+{
+  "name": "dsh-bingxing",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Host plugin: mark the original grep/glob tool definitions isConcurrencySafe so the agent-loop scheduler can run them in parallel.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "scripts": {
+    "build": "/usr/local/bin/node --check lib/index.js && /usr/local/bin/node --check test/scheduler.mjs && /usr/local/bin/node --check test/declare.test.mjs && /usr/local/bin/node --check test/mechanism.test.mjs",
+    "test": "ELECTRON_RUN_AS_NODE=1 '/Applications/DeepSeek Harness.app/Contents/MacOS/DeepSeek Harness' --test test/*.test.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

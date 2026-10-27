@@ -1,0 +1,3 @@
+- insert:
+    - id: dsh-bingxing
+      name: ./lib/index.js
