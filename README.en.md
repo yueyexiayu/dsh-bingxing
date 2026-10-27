@@ -18,7 +18,7 @@ It does not rewrite grep/glob, invent its own ordering, or patch DSH core. Over-
 
 | Feature | Behavior |
 |---|---|
-| Patch the original object | `ctx.tools.get("grep"|"glob")` returns the registered definition; set `isConcurrencySafe = () => true` |
+| Patch the original object | `ctx.tools.get("grep")` / `get("glob")` returns the registered definition; set `isConcurrencySafe = () => true` |
 | Scheduler sees it | Classification happens before `tools/execute`; only exact `true` is `parallel` |
 | Spill unchanged | No replacement object, so post-execute still owns over-cap files |
 | Writers stay exclusive | `edit` / `bash` stay undeclared; `grep, edit, grep` breaks at edit |

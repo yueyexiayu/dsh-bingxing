@@ -18,7 +18,7 @@
 
 | 能力 | 具体行为 |
 |---|---|
-| 原对象补声明 | `ctx.tools.get("grep"|"glob")` 拿到的就是注册时的定义；只设置 `isConcurrencySafe = () => true` |
+| 原对象补声明 | `ctx.tools.get("grep")` / `get("glob")` 拿到的就是注册时的定义；只设置 `isConcurrencySafe = () => true` |
 | 调度器生效 | 分类发生在 `tools/execute` 之前；精确 `true` 才 `parallel` |
 | 保持 spill | 不换对象，避免 post-execute 因身份变化跳过超限结果文件 |
 | 写工具仍独占 | `edit` / `bash` 不声明；`grep、edit、grep` 在 edit 处断开 |
