@@ -1,6 +1,6 @@
 {
   "name": "dsh-bingxing",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Host plugin: mark the original grep/glob tool definitions isConcurrencySafe so the agent-loop scheduler can run them in parallel.",
   "type": "module",

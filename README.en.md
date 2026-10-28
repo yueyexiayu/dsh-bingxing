@@ -4,7 +4,7 @@
   <p><strong>Let several grep / glob calls in one step actually overlap, without rewriting those tools.</strong></p>
   <p>A filesystem Host plugin for DeepSeek Harness Desktop.</p>
   <p><a href="README.md">简体中文</a> · <strong>English</strong></p>
-  <p><a href="package.json">plugin 0.1.0</a> · Host-only ESM · no Client, no UI</p>
+  <p><a href="package.json">plugin 0.1.1</a> · Host-only ESM · no Client, no UI</p>
   <p><a href="#features">Features</a> · <a href="#how-it-works">How it works</a> · <a href="#quick-start">Quick start</a> · <a href="#configuration">Configuration</a> · <a href="#validation">Validation</a> · <a href="#faq">FAQ</a></p>
 </div>
 
