@@ -4,7 +4,7 @@
   <p><strong>Let several grep / glob calls in one step actually overlap, without rewriting those tools.</strong></p>
   <p>A filesystem Host plugin for DeepSeek Harness Desktop.</p>
   <p><a href="README.md">简体中文</a> · <strong>English</strong></p>
-  <p><a href="package.json">plugin 0.1.1</a> · Host-only ESM · no Client, no UI</p>
+  <p><a href="package.json">plugin 0.1.2</a> · Host-only ESM · no Client, no UI</p>
   <p><a href="#features">Features</a> · <a href="#how-it-works">How it works</a> · <a href="#quick-start">Quick start</a> · <a href="#configuration">Configuration</a> · <a href="#validation">Validation</a> · <a href="#faq">FAQ</a></p>
 </div>
 
@@ -78,8 +78,6 @@ There is no config file and no custom HTTP route. The Host inject list is `tools
 
 grep/glob are registered by `@deepseek-ai/dsh-tool-fs-search` on the agent preset scope. A global `tools.get("grep")` may miss them; the plugin patches the same original object on `agent/created`.
 
-It can load beside `dsh-gongjuyasuo`. That plugin does not change `isConcurrencySafe`. After parallel search, inspect/recover still target each call’s spill, keyed by `callId`.
-
 Per-call timeouts still come from stock `dsh-tool-call-timeout-policy` and do not abort the whole step.
 
 </details>
@@ -111,7 +109,7 @@ bash can write. This plugin only declares grep and glob.
 
 **How do I uninstall?**
 
-Comment or delete only the `id: dsh-bingxing` insert in desktop `cordis.patch.yml`, then ⌘Q. Do not empty the whole patch or remove `dsh-gongjuyasuo`.
+Comment or delete only the `id: dsh-bingxing` insert in desktop `cordis.patch.yml`, then ⌘Q. Do not empty the whole patch or remove other entries.
 
 ## Community and license
 

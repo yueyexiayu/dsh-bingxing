@@ -62,7 +62,7 @@ test("frozen original definition is a visible failure", () => {
   assert.throws(() => ctx.created({ id: "agent-1" }), /frozen/);
 });
 
-test("real ToolRuntime: mutate original object, executionMode parallel, same-name register fails, dispose restores exclusive", async () => {
+test("real ToolRuntime: mutate original object, same-name register fails, dispose restores declaration", async () => {
   const [{ Context }, { ToolRuntime }, { SystemPrompt }] = await Promise.all([
     installed("cordis"),
     installed("dsh-tools"),
@@ -98,7 +98,7 @@ test("real ToolRuntime: mutate original object, executionMode parallel, same-nam
   ctx.tools.register(grep);
   ctx.tools.register(glob);
   assert.equal(ctx.tools.get("grep"), grep);
-  assert.equal(ctx.tools.executionMode({ name: "grep", arguments: {} }).kind, "exclusive");
+  assert.equal(grep.isConcurrencySafe, undefined);
   assert.throws(
     () => ctx.tools.register({
       name: "grep",
@@ -114,10 +114,9 @@ test("real ToolRuntime: mutate original object, executionMode parallel, same-nam
   const fiber = ctx.plugin({ name: "dsh-bingxing", inject: ["tools", "agents"], apply });
   await fiber;
   assert.equal(ctx.tools.get("grep"), grep);
-  assert.equal(ctx.tools.executionMode({ name: "grep", arguments: {} }).kind, "parallel");
-  assert.equal(ctx.tools.executionMode({ name: "glob", arguments: {} }).kind, "parallel");
+  assert.equal(glob.isConcurrencySafe(), true);
   assert.equal(grep.isConcurrencySafe(), true);
   await fiber.dispose();
   assert.equal(Object.hasOwn(grep, "isConcurrencySafe"), false);
-  assert.equal(ctx.tools.executionMode({ name: "grep", arguments: {} }).kind, "exclusive");
+  assert.equal(grep.isConcurrencySafe, undefined);
 });

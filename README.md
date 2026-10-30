@@ -4,7 +4,7 @@
   <p><strong>让同一步里的多个 grep / glob 真正并行，而不改它们的实现。</strong></p>
   <p>面向 DeepSeek Harness Desktop 的纯 Host 文件系统插件。</p>
   <p><strong>简体中文</strong> · <a href="README.en.md">English</a></p>
-  <p><a href="package.json">插件 0.1.1</a> · 纯 Host / ESM · 无 Client、无 UI</p>
+  <p><a href="package.json">插件 0.1.2</a> · 纯 Host / ESM · 无 Client、无 UI</p>
   <p><a href="#核心能力">核心能力</a> · <a href="#工作方式">工作方式</a> · <a href="#快速开始">快速开始</a> · <a href="#配置">配置</a> · <a href="#验证">验证</a> · <a href="#常见问题">常见问题</a></p>
 </div>
 
@@ -78,8 +78,6 @@ git clone https://github.com/yueyexiayu/dsh-bingxing.git "$DSH_HOME/plugins/dsh-
 
 grep/glob 由 `@deepseek-ai/dsh-tool-fs-search` 在 agent preset 作用域注册。全局 `tools.get("grep")` 可能看不到它们；插件会在 `agent/created` 上补同一原对象。
 
-与 `dsh-gongjuyasuo` 可同时挂载。gongjuyasuo 不改 `isConcurrencySafe`；并行后 inspect/recover 仍指向各次调用自己的 spill（按 `callId` 区分）。
-
 单调用超时仍由官方 `dsh-tool-call-timeout-policy` 做成 per-call deadline，不中止整步。
 
 </details>
@@ -111,7 +109,7 @@ bash 可能写文件。本插件只声明 grep 和 glob。
 
 **如何卸载？**
 
-只注释或删除 desktop `cordis.patch.yml` 里 `id: dsh-bingxing` 那一条 insert，然后 ⌘Q。不要清空整个 patch，也不要删掉 `dsh-gongjuyasuo` 等其他条目。
+只注释或删除 desktop `cordis.patch.yml` 里 `id: dsh-bingxing` 那一条 insert，然后 ⌘Q。不要清空整个 patch，也不要删掉其他条目。
 
 ## 社区与许可
 
